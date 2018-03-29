@@ -6,8 +6,6 @@
  * @return {string}        [description]
  */
 export function currentRouter(path, config) {
-	console.log(path)
-	console.log(config)
 	// 获取路由后缀，用户自己配置的
 	let routerSuffix = config.ROUTER_SUFFIX.admin
 	let reg = new RegExp(routerSuffix)
