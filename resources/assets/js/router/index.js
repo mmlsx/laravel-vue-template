@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import ExampleComponent from 'src/components/ExampleComponent'
+// import ExampleComponent from 'src/components/ExampleComponent'
+const ExampleComponent = () => import(/* webpackChunkName: "home" */ 'src/components/ExampleComponent.vue')
 
 Vue.use(VueRouter)
 
