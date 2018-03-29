@@ -10,22 +10,16 @@
 	import Home from 'src/layouts/Home'
 	import Admin from 'src/layouts/Admin'
 	import Config from 'src/config'
+	import { currentRouter } from 'src/utils/index'
 	export default {
 		components: {
-			home: Home,
-			admin: Admin
+			[Config.HOME_MODULE]: Home,
+			[Config.ADMIN_MODULE]: Admin
 		},
 		computed: {
 			currentView () {
-				// 获取路由后缀，用户自己配置的
-				let routerSuffix = Config.ROUTER_SUFFIX.admin
-				let reg = new RegExp(routerSuffix)
-				if (this.$route.path.search(reg) !== -1) {
-					// 后台模板,这里的返回值和components中的键相对应
-					return 'admin'
-				}
-				// 前台模板,这里的返回值和components中的键相对应
-				return 'home'
+				// 动态绑定当前视图
+				return currentRouter(this.$route.path, Config)
 			}
 		}
 	}
